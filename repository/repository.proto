@@ -4,8 +4,8 @@ package user;
 
 option go_package = "/repository;repository";
 
-service UserService {
-  rpc CreateUser(CreateUserRequest) returns (UserResponse);
+service RepositoryService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 
   rpc GetUserByID(GetUserByIDRequest) returns (UserResponse);
 }
@@ -18,6 +18,12 @@ message User {
 }
 
 message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message CreateUserResponse {
   string name = 1;
   string email = 2;
   string password = 3;

@@ -149,6 +149,66 @@ func (x *CreateUserRequest) GetPassword() string {
 	return ""
 }
 
+type CreateUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUserResponse) Reset() {
+	*x = CreateUserResponse{}
+	mi := &file_repository_repository_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUserResponse) ProtoMessage() {}
+
+func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_repository_repository_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
+func (*CreateUserResponse) Descriptor() ([]byte, []int) {
+	return file_repository_repository_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateUserResponse) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateUserResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *CreateUserResponse) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
 type GetUserByIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -158,7 +218,7 @@ type GetUserByIDRequest struct {
 
 func (x *GetUserByIDRequest) Reset() {
 	*x = GetUserByIDRequest{}
-	mi := &file_repository_repository_proto_msgTypes[2]
+	mi := &file_repository_repository_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -170,7 +230,7 @@ func (x *GetUserByIDRequest) String() string {
 func (*GetUserByIDRequest) ProtoMessage() {}
 
 func (x *GetUserByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[2]
+	mi := &file_repository_repository_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -183,7 +243,7 @@ func (x *GetUserByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByIDRequest) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{2}
+	return file_repository_repository_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetUserByIDRequest) GetId() int32 {
@@ -202,7 +262,7 @@ type UserResponse struct {
 
 func (x *UserResponse) Reset() {
 	*x = UserResponse{}
-	mi := &file_repository_repository_proto_msgTypes[3]
+	mi := &file_repository_repository_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -214,7 +274,7 @@ func (x *UserResponse) String() string {
 func (*UserResponse) ProtoMessage() {}
 
 func (x *UserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[3]
+	mi := &file_repository_repository_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -227,7 +287,7 @@ func (x *UserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
 func (*UserResponse) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{3}
+	return file_repository_repository_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *UserResponse) GetUser() *User {
@@ -250,15 +310,19 @@ const file_repository_repository_proto_rawDesc = "" +
 	"\x11CreateUserRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\"Z\n" +
+	"\x12CreateUserResponse\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\"$\n" +
 	"\x12GetUserByIDRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\".\n" +
 	"\fUserResponse\x12\x1e\n" +
 	"\x04user\x18\x01 \x01(\v2\n" +
-	".user.UserR\x04user2\x85\x01\n" +
-	"\vUserService\x129\n" +
+	".user.UserR\x04user2\x91\x01\n" +
+	"\x11RepositoryService\x12?\n" +
 	"\n" +
-	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x12.user.UserResponse\x12;\n" +
+	"CreateUser\x12\x17.user.CreateUserRequest\x1a\x18.user.CreateUserResponse\x12;\n" +
 	"\vGetUserByID\x12\x18.user.GetUserByIDRequest\x1a\x12.user.UserResponseB\x18Z\x16/repository;repositoryb\x06proto3"
 
 var (
@@ -273,19 +337,20 @@ func file_repository_repository_proto_rawDescGZIP() []byte {
 	return file_repository_repository_proto_rawDescData
 }
 
-var file_repository_repository_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_repository_repository_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_repository_repository_proto_goTypes = []any{
 	(*User)(nil),               // 0: user.User
 	(*CreateUserRequest)(nil),  // 1: user.CreateUserRequest
-	(*GetUserByIDRequest)(nil), // 2: user.GetUserByIDRequest
-	(*UserResponse)(nil),       // 3: user.UserResponse
+	(*CreateUserResponse)(nil), // 2: user.CreateUserResponse
+	(*GetUserByIDRequest)(nil), // 3: user.GetUserByIDRequest
+	(*UserResponse)(nil),       // 4: user.UserResponse
 }
 var file_repository_repository_proto_depIdxs = []int32{
 	0, // 0: user.UserResponse.user:type_name -> user.User
-	1, // 1: user.UserService.CreateUser:input_type -> user.CreateUserRequest
-	2, // 2: user.UserService.GetUserByID:input_type -> user.GetUserByIDRequest
-	3, // 3: user.UserService.CreateUser:output_type -> user.UserResponse
-	3, // 4: user.UserService.GetUserByID:output_type -> user.UserResponse
+	1, // 1: user.RepositoryService.CreateUser:input_type -> user.CreateUserRequest
+	3, // 2: user.RepositoryService.GetUserByID:input_type -> user.GetUserByIDRequest
+	2, // 3: user.RepositoryService.CreateUser:output_type -> user.CreateUserResponse
+	4, // 4: user.RepositoryService.GetUserByID:output_type -> user.UserResponse
 	3, // [3:5] is the sub-list for method output_type
 	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -304,7 +369,7 @@ func file_repository_repository_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_repository_repository_proto_rawDesc), len(file_repository_repository_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
