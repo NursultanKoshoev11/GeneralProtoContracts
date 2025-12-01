@@ -21,19 +21,200 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Profile struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserID        int64                  `protobuf:"varint,2,opt,name=userID,proto3" json:"userID,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Avatar        string                 `protobuf:"bytes,4,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Bio           string                 `protobuf:"bytes,5,opt,name=bio,proto3" json:"bio,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Profile) Reset() {
+	*x = Profile{}
+	mi := &file_repository_repository_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Profile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Profile) ProtoMessage() {}
+
+func (x *Profile) ProtoReflect() protoreflect.Message {
+	mi := &file_repository_repository_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Profile.ProtoReflect.Descriptor instead.
+func (*Profile) Descriptor() ([]byte, []int) {
+	return file_repository_repository_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Profile) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Profile) GetUserID() int64 {
+	if x != nil {
+		return x.UserID
+	}
+	return 0
+}
+
+func (x *Profile) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Profile) GetAvatar() string {
+	if x != nil {
+		return x.Avatar
+	}
+	return ""
+}
+
+func (x *Profile) GetBio() string {
+	if x != nil {
+		return x.Bio
+	}
+	return ""
+}
+
+func (x *Profile) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+type CreateRoleRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RoleID        int32                  `protobuf:"varint,1,opt,name=roleID,proto3" json:"roleID,omitempty"`
+	RoleName      string                 `protobuf:"bytes,2,opt,name=roleName,proto3" json:"roleName,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateRoleRequest) Reset() {
+	*x = CreateRoleRequest{}
+	mi := &file_repository_repository_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateRoleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateRoleRequest) ProtoMessage() {}
+
+func (x *CreateRoleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_repository_repository_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateRoleRequest.ProtoReflect.Descriptor instead.
+func (*CreateRoleRequest) Descriptor() ([]byte, []int) {
+	return file_repository_repository_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateRoleRequest) GetRoleID() int32 {
+	if x != nil {
+		return x.RoleID
+	}
+	return 0
+}
+
+func (x *CreateRoleRequest) GetRoleName() string {
+	if x != nil {
+		return x.RoleName
+	}
+	return ""
+}
+
+type ErrorResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Error         string                 `protobuf:"bytes,1,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ErrorResponse) Reset() {
+	*x = ErrorResponse{}
+	mi := &file_repository_repository_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ErrorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ErrorResponse) ProtoMessage() {}
+
+func (x *ErrorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_repository_repository_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ErrorResponse.ProtoReflect.Descriptor instead.
+func (*ErrorResponse) Descriptor() ([]byte, []int) {
+	return file_repository_repository_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ErrorResponse) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	RoleID        int32                  `protobuf:"varint,4,opt,name=roleID,proto3" json:"roleID,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,5,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_repository_repository_proto_msgTypes[0]
+	mi := &file_repository_repository_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +226,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[0]
+	mi := &file_repository_repository_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,21 +239,14 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{0}
+	return file_repository_repository_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *User) GetId() int32 {
+func (x *User) GetId() int64 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
-}
-
-func (x *User) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
 }
 
 func (x *User) GetEmail() string {
@@ -89,18 +263,32 @@ func (x *User) GetPassword() string {
 	return ""
 }
 
+func (x *User) GetRoleID() int32 {
+	if x != nil {
+		return x.RoleID
+	}
+	return 0
+}
+
+func (x *User) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	RoleID        int32                  `protobuf:"varint,3,opt,name=roleID,proto3" json:"roleID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_repository_repository_proto_msgTypes[1]
+	mi := &file_repository_repository_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -112,7 +300,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[1]
+	mi := &file_repository_repository_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -125,14 +313,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *CreateUserRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
+	return file_repository_repository_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateUserRequest) GetEmail() string {
@@ -149,6 +330,13 @@ func (x *CreateUserRequest) GetPassword() string {
 	return ""
 }
 
+func (x *CreateUserRequest) GetRoleID() int32 {
+	if x != nil {
+		return x.RoleID
+	}
+	return 0
+}
+
 type GetUserByEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -158,7 +346,7 @@ type GetUserByEmailRequest struct {
 
 func (x *GetUserByEmailRequest) Reset() {
 	*x = GetUserByEmailRequest{}
-	mi := &file_repository_repository_proto_msgTypes[2]
+	mi := &file_repository_repository_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -170,7 +358,7 @@ func (x *GetUserByEmailRequest) String() string {
 func (*GetUserByEmailRequest) ProtoMessage() {}
 
 func (x *GetUserByEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[2]
+	mi := &file_repository_repository_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -183,7 +371,7 @@ func (x *GetUserByEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByEmailRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByEmailRequest) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{2}
+	return file_repository_repository_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetUserByEmailRequest) GetEmail() string {
@@ -193,60 +381,16 @@ func (x *GetUserByEmailRequest) GetEmail() string {
 	return ""
 }
 
-type GetUserByNameRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetUserByNameRequest) Reset() {
-	*x = GetUserByNameRequest{}
-	mi := &file_repository_repository_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetUserByNameRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetUserByNameRequest) ProtoMessage() {}
-
-func (x *GetUserByNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetUserByNameRequest.ProtoReflect.Descriptor instead.
-func (*GetUserByNameRequest) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GetUserByNameRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
 type GetUserByIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetUserByIDRequest) Reset() {
 	*x = GetUserByIDRequest{}
-	mi := &file_repository_repository_proto_msgTypes[4]
+	mi := &file_repository_repository_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -258,7 +402,7 @@ func (x *GetUserByIDRequest) String() string {
 func (*GetUserByIDRequest) ProtoMessage() {}
 
 func (x *GetUserByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[4]
+	mi := &file_repository_repository_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -271,58 +415,14 @@ func (x *GetUserByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetUserByIDRequest) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{4}
+	return file_repository_repository_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetUserByIDRequest) GetId() int32 {
+func (x *GetUserByIDRequest) GetId() int64 {
 	if x != nil {
 		return x.Id
 	}
 	return 0
-}
-
-type UserResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UserResponse) Reset() {
-	*x = UserResponse{}
-	mi := &file_repository_repository_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UserResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UserResponse) ProtoMessage() {}
-
-func (x *UserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_repository_repository_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UserResponse.ProtoReflect.Descriptor instead.
-func (*UserResponse) Descriptor() ([]byte, []int) {
-	return file_repository_repository_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UserResponse) GetUser() *User {
-	if x != nil {
-		return x.User
-	}
-	return nil
 }
 
 var File_repository_repository_proto protoreflect.FileDescriptor
@@ -330,30 +430,45 @@ var File_repository_repository_proto protoreflect.FileDescriptor
 const file_repository_repository_proto_rawDesc = "" +
 	"\n" +
 	"\x1brepository/repository.proto\x12\n" +
-	"repository\"\\\n" +
+	"repository\"\x8d\x01\n" +
+	"\aProfile\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x16\n" +
+	"\x06userID\x18\x02 \x01(\x03R\x06userID\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\x12\x16\n" +
+	"\x06avatar\x18\x04 \x01(\tR\x06avatar\x12\x10\n" +
+	"\x03bio\x18\x05 \x01(\tR\x03bio\x12\x1c\n" +
+	"\tcreatedAt\x18\x06 \x01(\tR\tcreatedAt\"G\n" +
+	"\x11CreateRoleRequest\x12\x16\n" +
+	"\x06roleID\x18\x01 \x01(\x05R\x06roleID\x12\x1a\n" +
+	"\broleName\x18\x02 \x01(\tR\broleName\"%\n" +
+	"\rErrorResponse\x12\x14\n" +
+	"\x05error\x18\x01 \x01(\tR\x05error\"~\n" +
 	"\x04User\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x04 \x01(\tR\bpassword\"Y\n" +
-	"\x11CreateUserRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x03 \x01(\tR\bpassword\"-\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x16\n" +
+	"\x06roleID\x18\x04 \x01(\x05R\x06roleID\x12\x1c\n" +
+	"\tcreatedAt\x18\x05 \x01(\tR\tcreatedAt\"]\n" +
+	"\x11CreateUserRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x16\n" +
+	"\x06roleID\x18\x03 \x01(\x05R\x06roleID\"-\n" +
 	"\x15GetUserByEmailRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"*\n" +
-	"\x14GetUserByNameRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\"$\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"$\n" +
 	"\x12GetUserByIDRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"4\n" +
-	"\fUserResponse\x12$\n" +
-	"\x04user\x18\x01 \x01(\v2\x10.repository.UserR\x04user2\xbf\x02\n" +
-	"\x11RepositoryService\x12E\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id2\xae\x05\n" +
+	"\x11RepositoryService\x12=\n" +
 	"\n" +
-	"CreateUser\x12\x1d.repository.CreateUserRequest\x1a\x18.repository.UserResponse\x12M\n" +
-	"\x0eGetUserByEmail\x12!.repository.GetUserByEmailRequest\x1a\x18.repository.UserResponse\x12G\n" +
-	"\vGetUserByID\x12\x1e.repository.GetUserByIDRequest\x1a\x18.repository.UserResponse\x12K\n" +
-	"\rGetUserByName\x12 .repository.GetUserByNameRequest\x1a\x18.repository.UserResponseB\x18Z\x16/repository;repositoryb\x06proto3"
+	"CreateUser\x12\x1d.repository.CreateUserRequest\x1a\x10.repository.User\x12K\n" +
+	"\x0eDeleteUserByID\x12\x1e.repository.GetUserByIDRequest\x1a\x19.repository.ErrorResponse\x12Q\n" +
+	"\x11DeleteUserByEmail\x12!.repository.GetUserByEmailRequest\x1a\x19.repository.ErrorResponse\x12R\n" +
+	"\x15DeleteProfileByUserID\x12\x1e.repository.GetUserByIDRequest\x1a\x19.repository.ErrorResponse\x12E\n" +
+	"\x0eGetUserByEmail\x12!.repository.GetUserByEmailRequest\x1a\x10.repository.User\x12?\n" +
+	"\vGetUserByID\x12\x1e.repository.GetUserByIDRequest\x1a\x10.repository.User\x12F\n" +
+	"\n" +
+	"CreateRole\x12\x1d.repository.CreateRoleRequest\x1a\x19.repository.ErrorResponse\x12I\n" +
+	"\x12GetProfileByUserID\x12\x1e.repository.GetUserByIDRequest\x1a\x13.repository.Profile\x12K\n" +
+	"\x11GetProfileByEmail\x12!.repository.GetUserByEmailRequest\x1a\x13.repository.ProfileB\x18Z\x16/repository;repositoryb\x06proto3"
 
 var (
 	file_repository_repository_proto_rawDescOnce sync.Once
@@ -367,30 +482,40 @@ func file_repository_repository_proto_rawDescGZIP() []byte {
 	return file_repository_repository_proto_rawDescData
 }
 
-var file_repository_repository_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_repository_repository_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_repository_repository_proto_goTypes = []any{
-	(*User)(nil),                  // 0: repository.User
-	(*CreateUserRequest)(nil),     // 1: repository.CreateUserRequest
-	(*GetUserByEmailRequest)(nil), // 2: repository.GetUserByEmailRequest
-	(*GetUserByNameRequest)(nil),  // 3: repository.GetUserByNameRequest
-	(*GetUserByIDRequest)(nil),    // 4: repository.GetUserByIDRequest
-	(*UserResponse)(nil),          // 5: repository.UserResponse
+	(*Profile)(nil),               // 0: repository.Profile
+	(*CreateRoleRequest)(nil),     // 1: repository.CreateRoleRequest
+	(*ErrorResponse)(nil),         // 2: repository.ErrorResponse
+	(*User)(nil),                  // 3: repository.User
+	(*CreateUserRequest)(nil),     // 4: repository.CreateUserRequest
+	(*GetUserByEmailRequest)(nil), // 5: repository.GetUserByEmailRequest
+	(*GetUserByIDRequest)(nil),    // 6: repository.GetUserByIDRequest
 }
 var file_repository_repository_proto_depIdxs = []int32{
-	0, // 0: repository.UserResponse.user:type_name -> repository.User
-	1, // 1: repository.RepositoryService.CreateUser:input_type -> repository.CreateUserRequest
-	2, // 2: repository.RepositoryService.GetUserByEmail:input_type -> repository.GetUserByEmailRequest
-	4, // 3: repository.RepositoryService.GetUserByID:input_type -> repository.GetUserByIDRequest
-	3, // 4: repository.RepositoryService.GetUserByName:input_type -> repository.GetUserByNameRequest
-	5, // 5: repository.RepositoryService.CreateUser:output_type -> repository.UserResponse
-	5, // 6: repository.RepositoryService.GetUserByEmail:output_type -> repository.UserResponse
-	5, // 7: repository.RepositoryService.GetUserByID:output_type -> repository.UserResponse
-	5, // 8: repository.RepositoryService.GetUserByName:output_type -> repository.UserResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: repository.RepositoryService.CreateUser:input_type -> repository.CreateUserRequest
+	6, // 1: repository.RepositoryService.DeleteUserByID:input_type -> repository.GetUserByIDRequest
+	5, // 2: repository.RepositoryService.DeleteUserByEmail:input_type -> repository.GetUserByEmailRequest
+	6, // 3: repository.RepositoryService.DeleteProfileByUserID:input_type -> repository.GetUserByIDRequest
+	5, // 4: repository.RepositoryService.GetUserByEmail:input_type -> repository.GetUserByEmailRequest
+	6, // 5: repository.RepositoryService.GetUserByID:input_type -> repository.GetUserByIDRequest
+	1, // 6: repository.RepositoryService.CreateRole:input_type -> repository.CreateRoleRequest
+	6, // 7: repository.RepositoryService.GetProfileByUserID:input_type -> repository.GetUserByIDRequest
+	5, // 8: repository.RepositoryService.GetProfileByEmail:input_type -> repository.GetUserByEmailRequest
+	3, // 9: repository.RepositoryService.CreateUser:output_type -> repository.User
+	2, // 10: repository.RepositoryService.DeleteUserByID:output_type -> repository.ErrorResponse
+	2, // 11: repository.RepositoryService.DeleteUserByEmail:output_type -> repository.ErrorResponse
+	2, // 12: repository.RepositoryService.DeleteProfileByUserID:output_type -> repository.ErrorResponse
+	3, // 13: repository.RepositoryService.GetUserByEmail:output_type -> repository.User
+	3, // 14: repository.RepositoryService.GetUserByID:output_type -> repository.User
+	2, // 15: repository.RepositoryService.CreateRole:output_type -> repository.ErrorResponse
+	0, // 16: repository.RepositoryService.GetProfileByUserID:output_type -> repository.Profile
+	0, // 17: repository.RepositoryService.GetProfileByEmail:output_type -> repository.Profile
+	9, // [9:18] is the sub-list for method output_type
+	0, // [0:9] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_repository_repository_proto_init() }
@@ -404,7 +529,7 @@ func file_repository_repository_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_repository_repository_proto_rawDesc), len(file_repository_repository_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

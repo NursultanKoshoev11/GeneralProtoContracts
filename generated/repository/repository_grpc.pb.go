@@ -19,20 +19,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	RepositoryService_CreateUser_FullMethodName     = "/repository.RepositoryService/CreateUser"
-	RepositoryService_GetUserByEmail_FullMethodName = "/repository.RepositoryService/GetUserByEmail"
-	RepositoryService_GetUserByID_FullMethodName    = "/repository.RepositoryService/GetUserByID"
-	RepositoryService_GetUserByName_FullMethodName  = "/repository.RepositoryService/GetUserByName"
+	RepositoryService_CreateUser_FullMethodName            = "/repository.RepositoryService/CreateUser"
+	RepositoryService_DeleteUserByID_FullMethodName        = "/repository.RepositoryService/DeleteUserByID"
+	RepositoryService_DeleteUserByEmail_FullMethodName     = "/repository.RepositoryService/DeleteUserByEmail"
+	RepositoryService_DeleteProfileByUserID_FullMethodName = "/repository.RepositoryService/DeleteProfileByUserID"
+	RepositoryService_GetUserByEmail_FullMethodName        = "/repository.RepositoryService/GetUserByEmail"
+	RepositoryService_GetUserByID_FullMethodName           = "/repository.RepositoryService/GetUserByID"
+	RepositoryService_CreateRole_FullMethodName            = "/repository.RepositoryService/CreateRole"
+	RepositoryService_GetProfileByUserID_FullMethodName    = "/repository.RepositoryService/GetProfileByUserID"
+	RepositoryService_GetProfileByEmail_FullMethodName     = "/repository.RepositoryService/GetProfileByEmail"
 )
 
 // RepositoryServiceClient is the client API for RepositoryService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RepositoryServiceClient interface {
-	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserResponse, error)
-	GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*UserResponse, error)
-	GetUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*UserResponse, error)
-	GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*UserResponse, error)
+	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*User, error)
+	DeleteUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*ErrorResponse, error)
+	DeleteUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*ErrorResponse, error)
+	DeleteProfileByUserID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*ErrorResponse, error)
+	GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*User, error)
+	GetUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*User, error)
+	CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*ErrorResponse, error)
+	GetProfileByUserID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*Profile, error)
+	GetProfileByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*Profile, error)
 }
 
 type repositoryServiceClient struct {
@@ -43,9 +53,9 @@ func NewRepositoryServiceClient(cc grpc.ClientConnInterface) RepositoryServiceCl
 	return &repositoryServiceClient{cc}
 }
 
-func (c *repositoryServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+func (c *repositoryServiceClient) CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*User, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserResponse)
+	out := new(User)
 	err := c.cc.Invoke(ctx, RepositoryService_CreateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -53,9 +63,39 @@ func (c *repositoryServiceClient) CreateUser(ctx context.Context, in *CreateUser
 	return out, nil
 }
 
-func (c *repositoryServiceClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+func (c *repositoryServiceClient) DeleteUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*ErrorResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserResponse)
+	out := new(ErrorResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_DeleteUserByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryServiceClient) DeleteUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*ErrorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ErrorResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_DeleteUserByEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryServiceClient) DeleteProfileByUserID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*ErrorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ErrorResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_DeleteProfileByUserID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryServiceClient) GetUserByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
 	err := c.cc.Invoke(ctx, RepositoryService_GetUserByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -63,9 +103,9 @@ func (c *repositoryServiceClient) GetUserByEmail(ctx context.Context, in *GetUse
 	return out, nil
 }
 
-func (c *repositoryServiceClient) GetUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+func (c *repositoryServiceClient) GetUserByID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*User, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserResponse)
+	out := new(User)
 	err := c.cc.Invoke(ctx, RepositoryService_GetUserByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -73,10 +113,30 @@ func (c *repositoryServiceClient) GetUserByID(ctx context.Context, in *GetUserBy
 	return out, nil
 }
 
-func (c *repositoryServiceClient) GetUserByName(ctx context.Context, in *GetUserByNameRequest, opts ...grpc.CallOption) (*UserResponse, error) {
+func (c *repositoryServiceClient) CreateRole(ctx context.Context, in *CreateRoleRequest, opts ...grpc.CallOption) (*ErrorResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserResponse)
-	err := c.cc.Invoke(ctx, RepositoryService_GetUserByName_FullMethodName, in, out, cOpts...)
+	out := new(ErrorResponse)
+	err := c.cc.Invoke(ctx, RepositoryService_CreateRole_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryServiceClient) GetProfileByUserID(ctx context.Context, in *GetUserByIDRequest, opts ...grpc.CallOption) (*Profile, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Profile)
+	err := c.cc.Invoke(ctx, RepositoryService_GetProfileByUserID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *repositoryServiceClient) GetProfileByEmail(ctx context.Context, in *GetUserByEmailRequest, opts ...grpc.CallOption) (*Profile, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Profile)
+	err := c.cc.Invoke(ctx, RepositoryService_GetProfileByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,10 +147,15 @@ func (c *repositoryServiceClient) GetUserByName(ctx context.Context, in *GetUser
 // All implementations must embed UnimplementedRepositoryServiceServer
 // for forward compatibility.
 type RepositoryServiceServer interface {
-	CreateUser(context.Context, *CreateUserRequest) (*UserResponse, error)
-	GetUserByEmail(context.Context, *GetUserByEmailRequest) (*UserResponse, error)
-	GetUserByID(context.Context, *GetUserByIDRequest) (*UserResponse, error)
-	GetUserByName(context.Context, *GetUserByNameRequest) (*UserResponse, error)
+	CreateUser(context.Context, *CreateUserRequest) (*User, error)
+	DeleteUserByID(context.Context, *GetUserByIDRequest) (*ErrorResponse, error)
+	DeleteUserByEmail(context.Context, *GetUserByEmailRequest) (*ErrorResponse, error)
+	DeleteProfileByUserID(context.Context, *GetUserByIDRequest) (*ErrorResponse, error)
+	GetUserByEmail(context.Context, *GetUserByEmailRequest) (*User, error)
+	GetUserByID(context.Context, *GetUserByIDRequest) (*User, error)
+	CreateRole(context.Context, *CreateRoleRequest) (*ErrorResponse, error)
+	GetProfileByUserID(context.Context, *GetUserByIDRequest) (*Profile, error)
+	GetProfileByEmail(context.Context, *GetUserByEmailRequest) (*Profile, error)
 	mustEmbedUnimplementedRepositoryServiceServer()
 }
 
@@ -101,17 +166,32 @@ type RepositoryServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRepositoryServiceServer struct{}
 
-func (UnimplementedRepositoryServiceServer) CreateUser(context.Context, *CreateUserRequest) (*UserResponse, error) {
+func (UnimplementedRepositoryServiceServer) CreateUser(context.Context, *CreateUserRequest) (*User, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateUser not implemented")
 }
-func (UnimplementedRepositoryServiceServer) GetUserByEmail(context.Context, *GetUserByEmailRequest) (*UserResponse, error) {
+func (UnimplementedRepositoryServiceServer) DeleteUserByID(context.Context, *GetUserByIDRequest) (*ErrorResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteUserByID not implemented")
+}
+func (UnimplementedRepositoryServiceServer) DeleteUserByEmail(context.Context, *GetUserByEmailRequest) (*ErrorResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteUserByEmail not implemented")
+}
+func (UnimplementedRepositoryServiceServer) DeleteProfileByUserID(context.Context, *GetUserByIDRequest) (*ErrorResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteProfileByUserID not implemented")
+}
+func (UnimplementedRepositoryServiceServer) GetUserByEmail(context.Context, *GetUserByEmailRequest) (*User, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUserByEmail not implemented")
 }
-func (UnimplementedRepositoryServiceServer) GetUserByID(context.Context, *GetUserByIDRequest) (*UserResponse, error) {
+func (UnimplementedRepositoryServiceServer) GetUserByID(context.Context, *GetUserByIDRequest) (*User, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetUserByID not implemented")
 }
-func (UnimplementedRepositoryServiceServer) GetUserByName(context.Context, *GetUserByNameRequest) (*UserResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetUserByName not implemented")
+func (UnimplementedRepositoryServiceServer) CreateRole(context.Context, *CreateRoleRequest) (*ErrorResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (UnimplementedRepositoryServiceServer) GetProfileByUserID(context.Context, *GetUserByIDRequest) (*Profile, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProfileByUserID not implemented")
+}
+func (UnimplementedRepositoryServiceServer) GetProfileByEmail(context.Context, *GetUserByEmailRequest) (*Profile, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetProfileByEmail not implemented")
 }
 func (UnimplementedRepositoryServiceServer) mustEmbedUnimplementedRepositoryServiceServer() {}
 func (UnimplementedRepositoryServiceServer) testEmbeddedByValue()                           {}
@@ -152,6 +232,60 @@ func _RepositoryService_CreateUser_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RepositoryService_DeleteUserByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).DeleteUserByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_DeleteUserByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).DeleteUserByID(ctx, req.(*GetUserByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RepositoryService_DeleteUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).DeleteUserByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_DeleteUserByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).DeleteUserByEmail(ctx, req.(*GetUserByEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RepositoryService_DeleteProfileByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).DeleteProfileByUserID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_DeleteProfileByUserID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).DeleteProfileByUserID(ctx, req.(*GetUserByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RepositoryService_GetUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetUserByEmailRequest)
 	if err := dec(in); err != nil {
@@ -188,20 +322,56 @@ func _RepositoryService_GetUserByID_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RepositoryService_GetUserByName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserByNameRequest)
+func _RepositoryService_CreateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoleRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RepositoryServiceServer).GetUserByName(ctx, in)
+		return srv.(RepositoryServiceServer).CreateRole(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RepositoryService_GetUserByName_FullMethodName,
+		FullMethod: RepositoryService_CreateRole_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RepositoryServiceServer).GetUserByName(ctx, req.(*GetUserByNameRequest))
+		return srv.(RepositoryServiceServer).CreateRole(ctx, req.(*CreateRoleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RepositoryService_GetProfileByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).GetProfileByUserID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_GetProfileByUserID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).GetProfileByUserID(ctx, req.(*GetUserByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RepositoryService_GetProfileByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserByEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RepositoryServiceServer).GetProfileByEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RepositoryService_GetProfileByEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RepositoryServiceServer).GetProfileByEmail(ctx, req.(*GetUserByEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -218,6 +388,18 @@ var RepositoryService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RepositoryService_CreateUser_Handler,
 		},
 		{
+			MethodName: "DeleteUserByID",
+			Handler:    _RepositoryService_DeleteUserByID_Handler,
+		},
+		{
+			MethodName: "DeleteUserByEmail",
+			Handler:    _RepositoryService_DeleteUserByEmail_Handler,
+		},
+		{
+			MethodName: "DeleteProfileByUserID",
+			Handler:    _RepositoryService_DeleteProfileByUserID_Handler,
+		},
+		{
 			MethodName: "GetUserByEmail",
 			Handler:    _RepositoryService_GetUserByEmail_Handler,
 		},
@@ -226,8 +408,16 @@ var RepositoryService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RepositoryService_GetUserByID_Handler,
 		},
 		{
-			MethodName: "GetUserByName",
-			Handler:    _RepositoryService_GetUserByName_Handler,
+			MethodName: "CreateRole",
+			Handler:    _RepositoryService_CreateRole_Handler,
+		},
+		{
+			MethodName: "GetProfileByUserID",
+			Handler:    _RepositoryService_GetProfileByUserID_Handler,
+		},
+		{
+			MethodName: "GetProfileByEmail",
+			Handler:    _RepositoryService_GetProfileByEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
