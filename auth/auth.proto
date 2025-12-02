@@ -7,20 +7,19 @@ option go_package = "/auth;auth";
 service AuthService {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
-    rpc Refresh(RefreshRequest) returns (RefreshResponse);
 }
 
 message RegisterRequest {
-    string name = 1;
-    string email = 2;
-    string password = 3;
+    string email = 1;
+    string password = 2;
 }
 
 message RegisterResponse {
     int64 id = 1;
-    string name = 2;
-    string email = 3;
-    string role = 4;
+    string email = 2;
+    string password = 3;
+    int32 role_id = 4;
+    string CreatedAt = 5;
 }
 
 message LoginRequest {
@@ -29,15 +28,6 @@ message LoginRequest {
 }
 
 message LoginResponse {
-    string access_token = 1;
-    string refresh_token = 2;
-}
-
-message RefreshRequest {
-    string refresh_token = 1;
-}
-
-message RefreshResponse {
     string access_token = 1;
     string refresh_token = 2;
 }
